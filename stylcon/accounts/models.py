@@ -9,7 +9,7 @@ class User(AbstractUser, PermissionsMixin):
     # Add custom fields as needed
     email = models.EmailField(max_length=225, unique=True)
     first_name = models.CharField(max_length=100, )
-    last_name = models.CharField(max_lenth=100)
+    last_name = models.CharField(max_length=100)
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
