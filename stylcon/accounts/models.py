@@ -6,7 +6,6 @@ from .manager import UserManager
 
 
 class User(AbstractUser, PermissionsMixin):
-    # Add custom fields as needed
     email = models.EmailField(max_length=225, unique=True)
     first_name = models.CharField(max_length=100, )
     last_name = models.CharField(max_length=100)
