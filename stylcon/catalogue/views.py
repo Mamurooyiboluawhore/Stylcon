@@ -51,3 +51,24 @@ class CatalogueAPIViews(APIView):
 
             }
             return Response(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+    def put(self, request):
+
+        try:
+            catalogue = self.get_objects(pk)
+            serializer = CatalogueSerializers(catalogue, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                response = {
+                    'message': 'Catalogue successfully updated',
+                    'status': status.HTTP_200_OK,
+                    'data': serializer.data
+                }
+
+                return Response(response, status=status.HTTP_200_OK)
+        except Exception as e:
+            pass
+        pass
+
+    def delete(self, request):
+        pass
