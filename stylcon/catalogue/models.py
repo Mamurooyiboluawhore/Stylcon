@@ -8,3 +8,7 @@ class Catalogue(models.Model):
     description = models.CharField(max_length=100)
     createdat = models.DateTimeField(db_column='createdAt', default=timezone.now, blank=True, null=True)
     updatedat = models.DateTimeField(db_column='updatedAt', default=timezone.now, blank=True, null=True)
+
+    class meta:
+        db_name = 'catalogue'
+        
