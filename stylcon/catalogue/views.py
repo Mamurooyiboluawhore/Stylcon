@@ -52,7 +52,7 @@ class CatalogueAPIViews(APIView):
             }
             return Response(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
-    def put(self, request):
+    def put(self, pk, request):
 
         try:
             catalogue = self.get_objects(pk)
@@ -70,5 +70,11 @@ class CatalogueAPIViews(APIView):
             pass
         pass
 
-    def delete(self, request):
+    def delete(self, pk, request):
+        catalogue = self.get_objects_or_404(Catalogue, pk)
+        catalogue.delete()
+        response = {
+            'message': 'Catalogue successfully delete'
+            'status': 
+        }
         pass
