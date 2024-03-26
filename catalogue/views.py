@@ -71,10 +71,16 @@ class CatalogueAPIViews(APIView):
         pass
 
     def delete(self, pk, request):
-        catalogue = self.get_objects_or_404(Catalogue, pk)
-        catalogue.delete()
-        response = {
-            'message': 'Catalogue successfully delete'
-            'status': 
-        }
-        pass
+        try:
+            catalogue = self.get_objects_or_404(Catalogue, pk)
+            catalogue.delete()
+            response = {
+                'message': 'Catalogue successfully delete',
+                'status': status.HTTP_204_NO_CONTENT
+            }
+            return Response(response, status=status.HTTP_204_NO_CONTENT)
+        except Exception as e:
+            data = {
+                "error_message": f"An error occurred while removing a product review: {str(e)}",
+            }
+            return Response(data, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
