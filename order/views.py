@@ -1,3 +1,33 @@
 from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import Order
+from .serializers import OrderSerializers
+from rest_framework import status
+import json
 
-# Create your views here.
+
+class OrderList(APIView):        
+    '''
+        Get all orders from the database
+    '''
+    def get(self, request, format=None):
+       # Get all orders from the database
+        try:
+            order = Order.objects.all()
+            serializer = OrderSerializers(order)
+            response = {
+                'message': 'list of all orders',
+                'status': status.HTTP_200_OK,
+                'data': serializer.data
+                }
+            return Response(response, status=status.HTTP_200_OK)
+        except Exception as e:
+            response = {
+                'error': str(e),
+                'status': status.HTTP_500_INTERNAL_SERVER_ERROR
+            }
+            return Response(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
