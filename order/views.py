@@ -7,15 +7,18 @@ from rest_framework import status
 import json
 
 
-class OrderList(APIView):        
-    '''
-        Get all orders from the database
-    '''
+class OrderList(APIView):
+    """
+    Retrieve all orders from the database.
+    """
+
     def get(self, request, format=None):
-       # Get all orders from the database
+        """
+        Get all orders from the database.
+        """
         try:
-            order = Order.objects.all()
-            serializer = OrderSerializers(order)
+            orders = Order.objects.all()
+            serializer = OrderSerializers(orders, many=True)
             response = {
                 'message': 'list of all orders',
                 'status': status.HTTP_200_OK,
@@ -30,4 +33,4 @@ class OrderList(APIView):
             return Response(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-
+            
