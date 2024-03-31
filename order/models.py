@@ -18,13 +18,11 @@ class Order(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     product = models.ForeignKey('catalogue.Catalogue', on_delete=models.CASCADE, blank=True, null=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    customer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     subtotal = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
-    class meta:
+    class Meta:
         '''
             metadata for the Order model
         '''
-        db_name = "order"
-
-        from django.db import models
+        db_table = "order"

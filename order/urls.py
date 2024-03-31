@@ -4,4 +4,5 @@ from .views import OrderList
 
 urlpatterns = [
     path('', OrderList.as_view(), name='List of Order'),
+    path('create-oreder/', )
 ]

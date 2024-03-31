@@ -31,4 +31,17 @@ class OrderList(APIView):
                 'status': status.HTTP_500_INTERNAL_SERVER_ERROR
             }
             return Response(response, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+
+    def post(self, request):
+        pass
+
+    def update(self, request, pk):
+        pass
+
+    def delete(self, request, pk):
+        pass
+
+
+
 
