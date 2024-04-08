@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'catalogue',
     'order',
     'corsheaders',
+    'products',
 ]
 
 MIDDLEWARE = [
