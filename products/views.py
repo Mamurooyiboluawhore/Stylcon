@@ -49,7 +49,7 @@ class ProductListView(APIView):
 class ProductDetailView(APIView):
     def post (self, request):
         '''
-        
+        an endpoint for creating products
         '''
         try:
             serializer = ProductSerializers(data=request.data)
@@ -70,7 +70,7 @@ class ProductDetailView(APIView):
         
     def put(self, request, id):
         '''
-        
+        an endpoint for updating products
         '''
         try:
             product = Product.objects.get(id)
