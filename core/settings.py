@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'accounts',
     'catalogue',
+    'category',
     'order',
     'search',
     'corsheaders',

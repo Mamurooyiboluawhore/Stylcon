@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Order, User, Product 
+from .models import Order
 from .serializers import OrderSerializers, OrderCreateSerializer
 from rest_framework import status
 
-import json
 
 
 class OrderList(APIView):

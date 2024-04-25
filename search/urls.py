@@ -2,7 +2,7 @@ from django.urls import include, path
 from .views import SearchView
 
 
-urlspatterns = [
+urlpatterns = [
     # ex: /polls/
     path('', SearchView.as_view(), name='search'),
     
