@@ -1,4 +1,6 @@
 from django.db import models
+from accounts.models import User
+from category.models import Category
 
 # Create your models here.
 
@@ -7,8 +9,8 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
     quantity = models.BigIntegerField()
-    category = models.ForeignKey('Category', models.DO_NOTHING, blank=True, null=True)
-    user = models.ForeignKey('User', models.DO_NOTHING, blank=True, null=True)
+    category = models.ForeignKey(Category, models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey(User, models.DO_NOTHING, blank=True, null=True)
     price = models.DecimalField(max_digits=15, decimal_places=2)
     discount_price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
     admin_status = models.TextField(blank=True, null=True)
