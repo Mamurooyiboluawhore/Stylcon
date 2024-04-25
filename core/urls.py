@@ -44,6 +44,7 @@ urlpatterns = [
     path('api/catalogue/', include('catalogue.urls')),
     path('api/oder/', include('order.urls')),
     path('api/products', include('products.urls')),
+    path('api/search', include('search.urls')),
     path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0),name='schema-swagger-ui'),
     path('api/v1/auth/', include('accounts.urls'))
 ]

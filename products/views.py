@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from rest_framework import Response
-from rest_framework import APIView
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework import status
 from .models import Product
-from .serializers import ProductSerializers
+from .serializers import ProductSerializer
 
 
 class ProductListView(APIView):
@@ -14,7 +14,7 @@ class ProductListView(APIView):
     def get(self, request):
         try:
             products = Product.objects.all()
-            serializers = ProductSerializers(products, many=True)
+            serializers = ProductSerializer(products, many=True)
             response = {
                 'message': 'List of all Products',
                 'status': status.HTTP_200_OK,
@@ -31,7 +31,7 @@ class ProductListView(APIView):
     def get(self, request, pk):
         try:
             product = Product.objects.get(pk)
-            serializer = ProductSerializers(product)
+            serializer = ProductSerializer(product)
             response = {
                 'message': 'Get one product',
                 'status': status.HTTP_200_OK,
@@ -52,7 +52,7 @@ class ProductDetailView(APIView):
         an endpoint for creating products
         '''
         try:
-            serializer = ProductSerializers(data=request.data)
+            serializer = ProductSerializer(data=request.data)
             if serializer.is_valid():
                 serializer.save
                 response = {
@@ -74,7 +74,7 @@ class ProductDetailView(APIView):
         '''
         try:
             product = Product.objects.get(id)
-            serializer = ProductSerializers(product)
+            serializer = ProductSerializer(product)
             if serializer.is_valid():
                 serializer.save()
                 response={
@@ -116,4 +116,4 @@ class ProductDetailView(APIView):
         
 
 
-# Create your views here.
+
