@@ -15,6 +15,8 @@ class User(AbstractUser, PermissionsMixin):
     is_verified = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now=True)
+    email = models.EmailField(unique=True)
+    otp = models.CharField(max_length=6, null=True, blank=True)
 
 
     USERNAME_FIELD = 'email'
